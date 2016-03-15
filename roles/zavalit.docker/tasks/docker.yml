@@ -1,0 +1,11 @@
+---
+
+
+- name: Install docker
+  become: no
+  shell: wget -qO- https://get.docker.com/ | sed 's/lxc-docker/lxc-docker-{{docker_version}}/' | sh
+
+
+- name: Add user to docker group
+  become: yes
+  shell: usermod -aG docker ${USER}

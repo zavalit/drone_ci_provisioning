@@ -1,0 +1,9 @@
+[drone.ci.startupboilerplate.com]
+ drone.ci.startupboilerplate.com ansible_host=127.0.0.1 ansible_user=root
+
+
+[bitbucket.ci.startupboilerplate.com:vars]
+ ci_vm_name=drone.ci.startupboilerplate.com
+ drone_root=/opt/projects/drone.ci
+ oauth2_client_id=ntaSwelkmckeF5aN
+ oauth2_client_secret=sSKllksdnjcrjnlkwek8jtvup4

@@ -1,0 +1,9 @@
+drone:
+  image: drone/drone:0.4
+  volumes:
+      - {{ drone_root }}/drone:/var/lib/drone
+  env_file:
+      - {{ drone_root }}/dronerc
+  restart: always
+  ports:
+      - "8000:8000"

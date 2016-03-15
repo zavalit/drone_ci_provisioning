@@ -1,0 +1,23 @@
+galaxy_info:
+  author: zavalit
+  description: Provision a Docker plattform on your host
+
+  issue_tracker_url: https://github.com/zavalit/ansible-role-docker/issues
+
+  license: MIT
+
+  min_ansible_version: 1.2
+
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+
+  galaxy_tags:
+    - "docker"
+    - "compose"
+    - "machine"
+    - "virtualbox"
+
+
+dependencies: []

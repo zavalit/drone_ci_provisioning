@@ -1,0 +1,37 @@
+---
+#docker
+  - name: Check docker version
+    shell: docker -v | awk '{ print $3 }'
+    ignore_errors: True
+    register: current_docker_version
+
+  - include: docker.yml
+    when: current_docker_version.stdout != "{{ docker_version}},"
+
+#docker-compose
+  - name: Check docker-compose version
+    shell: docker-compose --version | awk '{ print $3 }'
+    ignore_errors: True
+    register: current_docker_compose_version
+
+  - include: docker-compose.yml
+    become: yes
+    when: current_docker_compose_version.stdout != "{{ docker_compose_version }},"
+
+#docker-machine
+  - name: Check docker-machine version
+    shell: docker-machine --version | awk '{ print $3 }'
+    ignore_errors: True
+    register: current_docker_machine_version
+
+  - include: docker-machine.yml
+    when: current_docker_machine_version.stdout != "{{ docker_machine_version }},"
+
+#virtualbox
+  - name: Check virtualbox version
+    shell: virtualbox --help | awk 'NR==1{ print $5}'
+    ignore_errors: True
+    register: current_virtualbox_version
+
+  - include: virtualbox.yml
+    when: current_virtualbox_version.stdout != "{{ virtualbox_version }}"

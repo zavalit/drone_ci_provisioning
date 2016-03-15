@@ -1,0 +1,10 @@
+---
+ - hosts: all
+   roles:
+     - zavalit.docker
+
+ - hosts: bitbucket.ci.startupboilerplate.com
+   roles:
+     - vm
+     - drone
+     - proxy

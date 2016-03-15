@@ -1,0 +1,4 @@
+---
+
+  - name: Download Docker Machine binary
+    action: get_url url=https://github.com/docker/machine/releases/download/v{{docker_machine_version}}/docker-machine-Linux-x86_64 dest=/usr/local/bin/docker-machine-{{docker_machine_version}} mode=0755

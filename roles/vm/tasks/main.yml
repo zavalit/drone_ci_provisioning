@@ -1,0 +1,7 @@
+---
+ - name: create ci vm
+   command: docker-machine create -d virtualbox {{ ci_vm_name }} creates="~/.docker/machine/machines/{{ ci_vm_name }}"
+
+ - name: register vm ip
+   shell: docker-machine ip {{ ci_vm_name }}
+   register: ci_vm_ip

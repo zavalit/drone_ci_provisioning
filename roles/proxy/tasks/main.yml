@@ -1,0 +1,12 @@
+--- 
+  - name: prepare nginx
+    become: yes
+    apt: name=nginx state=present
+
+  - name: reverse proxy configuration
+    become: yes
+    template: src=reverse.conf.j2 dest=/etc/nginx/conf.d/{{ ci_vm_name }}.conf
+
+  - name: restart nginx
+    become: yes
+    service: name=nginx state=restarted

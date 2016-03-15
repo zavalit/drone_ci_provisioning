@@ -1,0 +1,15 @@
+---
+ - name: provide CI folder
+   become: yes
+   file: path="{{ drone_root }}" owner={{ ansible_user }} state=directory
+
+ - name: provide provider oauth config
+   template: src=dronerc.j2 dest="{{ drone_root}}/dronerc"
+
+ - name: provide container service configuration
+   template: src=docker-compose.yml.j2 dest="{{ drone_root }}/docker-compose.yml"
+
+ - name: run ci
+   shell: eval $(docker-machine env {{ ci_vm_name }}) && docker-compose up -d
+   args:
+    chdir: "{{ drone_root }}"
